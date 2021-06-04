@@ -4,10 +4,9 @@ import numpy as np
 import os 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-print(dir_path)
-#exit()
+dir_path_src = dir_path + "\\CSVs"
 
-dataset = pd.read_csv(dir_path+'\\formatado_semFiltro_Parte1.csv', sep=',')
+dataset = pd.read_csv(dir_path_src + '\\formatado_semFiltro_Parte1.csv', sep=',')
 
 dataset['Q1'] = np.where((dataset['Q1'] != 'Tristeza'),0,1)
 dataset['Q2'] = np.where((dataset['Q2'] != 'Felicidade'),0,1)
