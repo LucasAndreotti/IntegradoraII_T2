@@ -4,6 +4,8 @@ import pandas as pd
 import os 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
+dir_path_src = dir_path + '\\CSVs_formatado'
+
 def padronizador(dataset,tipo):
 
     #print((dataset.columns))
@@ -39,7 +41,7 @@ def padronizador(dataset,tipo):
     dataset = dataset.replace('Não','Nao')
 
     return dataset
-d
+
 def carisma():
 
     carisma_dataset = pd.read_csv(dir_path+"\\CSVs_original\\semFiltro_Carisma.csv", sep=';')
@@ -54,7 +56,7 @@ def carisma():
     carisma_dataset = carisma_dataset.replace("Pouco carismático", 2)
     carisma_dataset = carisma_dataset.replace("Sem carisma", 1)
 
-    carisma_dataset.to_csv(dir_path+'\\CSVs/formatado_semFiltro_Carisma.csv', index=False)
+    carisma_dataset.to_csv(dir_path_src+'\\formatado_semFiltro_Carisma.csv', index=False)
     #print(carisma_dataset)
 
     #carisma_dataset_mean = carisma_dataset.mean()
@@ -74,21 +76,12 @@ def conforto():
     conforto_dataset = conforto_dataset.replace("Desconfortável", 2)
     conforto_dataset = conforto_dataset.replace("Muito desconfortável", 1)
 
-    conforto_dataset.to_csv(dir_path+'\\CSVs/formatado_semFiltro_Conforto.csv', index=False)
+    conforto_dataset.to_csv(dir_path_src+'\\formatado_semFiltro_Conforto.csv', index=False)
     #print(conforto_dataset)
 
     #conforto_dataset_mean = conforto_dataset.mean()
     #conforto_dataset_mean.to_csv('C:/Users/lucas.andreotti/Desktop/03 - Integradora/DadosFormulario/Analise_Conforto_Carisma/python_Carisma/media_formatado_semFiltro_Conforto.csv', index=False)
 
-
-""" xxxx_dataset = xxxx_dataset.replace("Apenas um rosto neutro", "Neutro")
-xxxx_dataset = xxxx_dataset.replace("Não sei (percebi uma expressão, mas não sei qual)", "Nao_Sei")
-
-
-
-xxxx_dataset = xxxx_dataset.replace("Nenhuma (não percebi nada a mais)", "Nenhuma")
-xxxx_dataset = xxxx_dataset.replace("Eu não sei (eu percebi alguma coisa mas não sei o que)", "Nao_sei")
- """
 def acertos_Parte1():
     parte1_dataset = pd.read_csv(dir_path+"\\CSVs_original\\semFiltro_Parte1.csv", sep=';')
     parte1_dataset = padronizador(parte1_dataset,1)
@@ -97,7 +90,13 @@ def acertos_Parte1():
     parte1_dataset = parte1_dataset.replace("Não sei (percebi uma expressão, mas não sei qual)", "Nao_Sei")
     parte1_dataset = parte1_dataset.replace("Não sei (percebi uma expressão mas não sei qual)", "Nao_Sei")
 
-    parte1_dataset.to_csv(dir_path+'\\CSVs/formatado_semFiltro_Parte1.csv', index=False)
+    parte1_dataset.to_csv(dir_path_src+'\\formatado_semFiltro_Parte1.csv', index=False)
+
+
+
+""" def acertos_Parte2(): """
+
+
 
 def acertos_Parte2A():
     parte2A_dataset = pd.read_csv(dir_path+"\\CSVs_original\\semFiltro_Parte2A.csv", sep=';')
@@ -106,7 +105,7 @@ def acertos_Parte2A():
     parte2A_dataset = parte2A_dataset.replace("Nenhuma (não percebi nada a mais)", "Nenhuma")
     parte2A_dataset = parte2A_dataset.replace("Eu não sei (eu percebi alguma coisa mas não sei o que)", "Nao_sei")
 
-    parte2A_dataset.to_csv(dir_path+'\\CSVs/formatado_semFiltro_Parte2A.csv', index=False)
+    parte2A_dataset.to_csv(dir_path_src+'\\formatado_semFiltro_Parte2A.csv', index=False)
 
 def acertos_Parte2B():
     parte2B_dataset = pd.read_csv(dir_path+"\\CSVs_original\\semFiltro_Parte2B.csv", sep=';')
@@ -115,7 +114,7 @@ def acertos_Parte2B():
     parte2B_dataset = parte2B_dataset.replace("Nenhuma (não percebi nada a mais)", "Nenhuma")
     parte2B_dataset = parte2B_dataset.replace("Eu não sei (eu percebi alguma coisa mas não sei o que)", "Nao_sei")
 
-    parte2B_dataset.to_csv(dir_path+'\\CSVs/formatado_semFiltro_Parte2B.csv', index=False)
+    parte2B_dataset.to_csv(dir_path_src+'\\formatado_semFiltro_Parte2B.csv', index=False)
 
 
 carisma()
