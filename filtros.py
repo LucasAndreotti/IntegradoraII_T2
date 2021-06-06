@@ -35,6 +35,10 @@ def aplica_filtros(nome):
 
     ###
 
+    #SEM_FILTRO
+
+    dataset.to_csv(dir_path_to_nome+'\\'+nome+'_SEM_FILTRO.csv', index=False)
+
     #filtroFem
     #filtroMasc
 
