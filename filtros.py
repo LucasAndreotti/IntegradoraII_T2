@@ -72,7 +72,7 @@ def aplica_filtros(nome):
     filtroEscolaridade_EMI_EMC_SI = dataset[(dataset['Escolaridade']=='EMI') | (dataset['Escolaridade']=='EMC') | (dataset['Escolaridade']=='SI')]
     filtroEscolaridade_SC_PGC = dataset[(dataset['Escolaridade']=='SC') | (dataset['Escolaridade']=='PGC')]
 
-    filtroEscolaridade_EMI_EMC_SI.to_csv(dir_path_to_nome+'\\'+nome+'_Escolaridade_EMI_EMC_SI_.csv', index=False)
+    filtroEscolaridade_EMI_EMC_SI.to_csv(dir_path_to_nome+'\\'+nome+'_Escolaridade_EMI_EMC_SI.csv', index=False)
     filtroEscolaridade_SC_PGC.to_csv(dir_path_to_nome+'\\'+nome+'_Escolaridade_SC_PGC.csv', index=False)
 
     #print(filtroEscolaridade_SC_PGC)

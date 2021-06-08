@@ -5,14 +5,15 @@ import os
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
+
 dataset = pd.read_csv(dir_path+'\\CSVs_corrigido\\corrigido_semFiltro_Parte1.csv',sep=",")
 
 #print(dataset)
 
 dataset_mean = dataset.mean()
 
-#print(dataset_mean['Q1'])
-
+print(dataset_mean)
+exit()
 
 data = {'Questao': ['Q1','Q2','Q3','Q4','Q5','Q6']}
   
