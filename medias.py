@@ -12,7 +12,6 @@ dir_path_from = dir_path + '\\CSVs_filtros'
 dir_path_to = dir_path + '\\CSVs_medias'
 
 lst_filtros = [
-
 '_SEM_FILTRO',
 '_Familiar_Sim',
 '_Familiar_Nao',
@@ -49,10 +48,10 @@ def mediaDosFiltros(nome):
 
     dataset_medias.to_csv(dir_path_to+'\\medias_'+nome+'.csv',index=False,sep=';')
 
-lst_partes = ['Parte1','Parte2A','Parte2B','Carisma','Conforto']
 
 ##
 
+lst_partes = ['Parte1','Parte2A','Parte2B','Carisma','Conforto']
 for parte in lst_partes:
     mediaDosFiltros(parte) 
 
