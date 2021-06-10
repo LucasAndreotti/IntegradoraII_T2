@@ -3,9 +3,6 @@ import pandas as pd
 import numpy as np
 import os 
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-
-dir_path_to = dir_path + "\\CSVs_filtros\\filtros_"
 
 """ 
 ** CSVs para Carisma e Conforto estão formatados em /CSVs_formatado
@@ -13,21 +10,22 @@ dir_path_to = dir_path + "\\CSVs_filtros\\filtros_"
 ** CSVs para Parte1 Parte2A Parte2B estão corrigidos em /CSVs_corrigido
 """
 
+""" 
+Parte1  -> /CSVs_filtros/filtros_Parte1
+Parte2A -> /CSVs_filtros/filtros_Parte2A
+Parte2B -> /CSVs_filtros/filtros_Parte2B
+
+Carisma  -> /CSVs_filtros/filtros_Carisma
+Conforto -> /CSVs_filtros/filtros_Conforto
+"""
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+dir_path_to = dir_path + "\\CSVs_filtros\\filtros_"
+
 def aplica_filtros(nome):
-
-    """ 
-    Parte1  -> /CSVs_filtros/filtros_Parte1
-    Parte2A -> /CSVs_filtros/filtros_Parte2A
-    Parte2B -> /CSVs_filtros/filtros_Parte2B
-
-    Carisma  -> /CSVs_filtros/filtros_Carisma
-    Conforto -> /CSVs_filtros/filtros_Conforto
-    """
-
-    if(nome == 'Carisma' or nome == 'Conforto'):
-        
-        dataset = pd.read_csv(dir_path+'\\CSVs_formatado\\formatado_semFiltro_'+nome+'.csv', sep=',')
-        
+    
+    if(nome == 'Carisma' or nome == 'Conforto'): 
+        dataset = pd.read_csv(dir_path+'\\CSVs_formatado\\formatado_semFiltro_'+nome+'.csv', sep=',') 
     else:
         dataset = pd.read_csv(dir_path+'\\CSVs_corrigido\\corrigido_semFiltro_'+nome+'.csv',sep=',')
 

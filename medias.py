@@ -32,12 +32,15 @@ def mediaDosFiltros(dataset_medias,path,tipo):
 
         lst_medias=[]
         for media in dataset_filtro_media:
-            if tipo==1:
-                lst_medias.append("{:.2%}".format(media))
-            else:
-                lst_medias.append("{:.2f}".format(media))
+            media = "{:.3f}".format(media)
+            media = (media.replace('.',','))
+            #print(type(media))
+            #exit()
+            lst_medias.append(media)
         dataset_medias[filtro]=lst_medias
 
+    #dataset_medias = dataset_medias.replace('.', ',')
+    #print(dataset_medias)
     return dataset_medias
 
 def mediasParte1():
@@ -50,7 +53,7 @@ def mediasParte1():
     dataset_medias = mediaDosFiltros(dataset_medias,path,1)
     #print(dataset_medias)
 
-    dataset_medias.to_csv(dir_path_to+'\\medias_Parte1.csv',index=False)
+    dataset_medias.to_csv(dir_path_to+'\\medias_Parte1.csv',index=False,sep = ';')
 
 def mediasParte2A():
 
@@ -61,7 +64,7 @@ def mediasParte2A():
 
     dataset_medias = mediaDosFiltros(dataset_medias,path,1)
 
-    dataset_medias.to_csv(dir_path_to+'\\medias_Parte2A.csv',index=False)
+    dataset_medias.to_csv(dir_path_to+'\\medias_Parte2A.csv',index=False,sep = ';')
 
 def mediasParte2B():
 
@@ -72,7 +75,7 @@ def mediasParte2B():
 
     dataset_medias = mediaDosFiltros(dataset_medias,path,1)
 
-    dataset_medias.to_csv(dir_path_to+'\\medias_Parte2B.csv',index=False)
+    dataset_medias.to_csv(dir_path_to+'\\medias_Parte2B.csv',index=False,sep = ';')
 
 def mediasCarisma():
 
@@ -83,7 +86,7 @@ def mediasCarisma():
 
     dataset_medias = mediaDosFiltros(dataset_medias,path,2)
 
-    dataset_medias.to_csv(dir_path_to+'\\medias_Carisma.csv',index=False)
+    dataset_medias.to_csv(dir_path_to+'\\medias_Carisma.csv',index=False,sep = ';')
 
 def mediasConforto():
 
@@ -94,7 +97,7 @@ def mediasConforto():
 
     dataset_medias = mediaDosFiltros(dataset_medias,path,2)
 
-    dataset_medias.to_csv(dir_path_to+'\\medias_Conforto.csv',index=False)
+    dataset_medias.to_csv(dir_path_to+'\\medias_Conforto.csv',index=False,sep = ';')
 
 
 
