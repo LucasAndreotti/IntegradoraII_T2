@@ -24,7 +24,15 @@ lst_filtros = [
 '_Escolaridade_SC_PGC',
 ]
 
-def mediaDosFiltros(dataset_medias,path,tipo):
+def mediaDosFiltros(nome):
+    if nome == 'Parte1':
+        dataset_medias = {'Questao': ['Q1','Q2','Q3','Q4','Q5','Q6']}
+    else:
+        dataset_medias = {'Questao' : ['Q7','Q8','Q9','Q10','Q11','Q12','Q13','Q14','Q15','Q16','Q17','Q18','Q19','Q20','Q21','Q22','Q23','Q24','Q25','Q26']}
+    
+    dataset_medias = pd.DataFrame(dataset_medias)
+    
+    path = dir_path_from+'\\filtros_'+nome+'\\'+nome
 
     for filtro in lst_filtros:
         dataset_filtro = pd.read_csv(path+filtro+'.csv',sep=',')
@@ -39,102 +47,18 @@ def mediaDosFiltros(dataset_medias,path,tipo):
             lst_medias.append(media)
         dataset_medias[filtro]=lst_medias
 
-    #dataset_medias = dataset_medias.replace('.', ',')
-    #print(dataset_medias)
-    return dataset_medias
+    dataset_medias.to_csv(dir_path_to+'\\medias_'+nome+'.csv',index=False,sep=';')
 
-def mediasParte1():
+lst_partes = ['Parte1','Parte2A','Parte2B','Carisma','Conforto']
 
-    dataset_medias = {'Questao': ['Q1','Q2','Q3','Q4','Q5','Q6']}
-    dataset_medias = pd.DataFrame(dataset_medias)
-        
-    path = dir_path_from+'\\filtros_Parte1\\Parte1'
+##
 
-    dataset_medias = mediaDosFiltros(dataset_medias,path,1)
-    #print(dataset_medias)
-
-    dataset_medias.to_csv(dir_path_to+'\\medias_Parte1.csv',index=False,sep = ';')
-
-def mediasParte2A():
-
-    dataset_medias = {'Questao' : ['Q7','Q8','Q9','Q10','Q11','Q12','Q13','Q14','Q15','Q16','Q17','Q18','Q19','Q20','Q21','Q22','Q23','Q24','Q25','Q26']}
-    dataset_medias = pd.DataFrame(dataset_medias)
-
-    path = dir_path_from+'\\filtros_Parte2A\\Parte2A'
-
-    dataset_medias = mediaDosFiltros(dataset_medias,path,1)
-
-    dataset_medias.to_csv(dir_path_to+'\\medias_Parte2A.csv',index=False,sep = ';')
-
-def mediasParte2B():
-
-    dataset_medias = {'Questao' : ['Q7','Q8','Q9','Q10','Q11','Q12','Q13','Q14','Q15','Q16','Q17','Q18','Q19','Q20','Q21','Q22','Q23','Q24','Q25','Q26']}
-    dataset_medias = pd.DataFrame(dataset_medias)
-
-    path = dir_path_from+'\\filtros_Parte2B\\Parte2B'
-
-    dataset_medias = mediaDosFiltros(dataset_medias,path,1)
-
-    dataset_medias.to_csv(dir_path_to+'\\medias_Parte2B.csv',index=False,sep = ';')
-
-def mediasCarisma():
-
-    dataset_medias = {'Questao' : ['Q7','Q8','Q9','Q10','Q11','Q12','Q13','Q14','Q15','Q16','Q17','Q18','Q19','Q20','Q21','Q22','Q23','Q24','Q25','Q26']}
-    dataset_medias = pd.DataFrame(dataset_medias)
-
-    path = dir_path_from+'\\filtros_Carisma\\Carisma'
-
-    dataset_medias = mediaDosFiltros(dataset_medias,path,2)
-
-    dataset_medias.to_csv(dir_path_to+'\\medias_Carisma.csv',index=False,sep = ';')
-
-def mediasConforto():
-
-    dataset_medias = {'Questao' : ['Q7','Q8','Q9','Q10','Q11','Q12','Q13','Q14','Q15','Q16','Q17','Q18','Q19','Q20','Q21','Q22','Q23','Q24','Q25','Q26']}
-    dataset_medias = pd.DataFrame(dataset_medias)
-
-    path = dir_path_from+'\\filtros_Conforto\\Conforto'
-
-    dataset_medias = mediaDosFiltros(dataset_medias,path,2)
-
-    dataset_medias.to_csv(dir_path_to+'\\medias_Conforto.csv',index=False,sep = ';')
-
-
-
-mediasParte1()
-mediasParte2A()
-mediasParte2B()
-mediasConforto()
-mediasCarisma()
-
-
-
-
-
-
-
-
-
-
-
-
-
+for parte in lst_partes:
+    mediaDosFiltros(parte) 
 
 
 
 """ 
-                Q1  Q2  Q3  Q4  Q5  Q6
-
-semFiltro       medias
-Fem         
-Masc 
-Fam_Sim
-Fam_Nao
-menor_30
-maior_30
-emi_emc_si
-sc_pgc
-
         semFiltro    Fem    Masc    Fam_Sim     Fam_Nao     menor_30    maior_30    emi_emc_si      sc_pg
 
         
