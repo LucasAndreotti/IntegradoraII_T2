@@ -228,12 +228,6 @@ mediaDosFiltros('Parte2B')
 mediaDosFiltros('Conforto')
 mediaDosFiltros('Carisma')
 
-""" lst_partes = ['Parte1','Parte2A','Parte2B','Carisma','Conforto']
-for parte in lst_partes:
-    mediaDosFiltros(parte)  """
-
-
-
 """ 
         semFiltro    Fem    Masc    Fam_Sim     Fam_Nao     menor_30    maior_30    emi_emc_si      sc_pg
 
