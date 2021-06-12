@@ -24,9 +24,20 @@ lst_filtros = [
 '_Escolaridade_SC_PGC',
 ]
 
-dic = { 'pp':'pos_pos','pn':'pos_neg','nn':'neg_neg','np':'neg_pos'}
+dic_P1 = {'p':'pos','n':'neg'}
 
-dic_alias = {
+dic_alias_P1 = {
+1 : 'n',
+2 : 'p',
+3 : 'p',
+4 : 'n',
+5 : 'n',
+6 : 'n'
+}
+
+dic_P2 = { 'pp':'pos_pos','pn':'pos_neg','nn':'neg_neg','np':'neg_pos'}
+
+dic_alias_P2 = {
 7  :	'pn', 
 8  :	'pn' ,
 9  :	'np' ,
@@ -49,12 +60,12 @@ dic_alias = {
 26 :	'np' }
 
 lst_P1_micro_answers =[
-'Q1_Tristeza',
-'Q2_Felicidade',
-'Q3_Surpresa',
-'Q4_Medo',
-'Q5_Raiva',
-'Q6_Desgosto'
+'Q1_Micro_Tristeza',
+'Q2_Micro_Felicidade',
+'Q3_Micro_Surpresa',
+'Q4_Micro_Medo',
+'Q5_Micro_Raiva',
+'Q6_Micro_Desgosto'
 ]
 
 lst_P2_macro_answers=[
@@ -129,7 +140,8 @@ lst_P2_micro_macro_answers=[
 def mediaDosFiltros(nome):
     dataset_medias= {}
     if nome == 'Parte1':
-        dataset_medias = {'Questao': [lst_P1_micro_answers,'Med_Porcent']}
+        lista = lst_P1_micro_answers
+        lista += ['Med_Medias','Med_Pos','Med_Neg']
     else:
 
         if nome == 'Carisma' or nome == 'Conforto':
@@ -140,7 +152,8 @@ def mediaDosFiltros(nome):
             lista=lst_P2_micro_answers
 
         lista=lista+['Med_Porcent','Med_PosPos','Med_PosNeg','Med_NegNeg','Med_NegPos']
-        dataset_medias = {'Questao': lista}
+    
+    dataset_medias = {'Questao': lista}
 
     #print(dataset_medias['Questao'],'\n\n')
     dataset_medias = pd.DataFrame(dataset_medias)
@@ -157,33 +170,48 @@ def mediaDosFiltros(nome):
 
         if nome != 'Parte1':
             n_questao = 7
-            media_pp = []
-            media_pn = []
-            media_nn = []
-            media_np = []
+            media_PosPos = []
+            media_PosNeg = []
+            media_NegNeg = []
+            media_NegPos = []
 
             for i in range(len(lst_medias)-1):
-                #print(n_questao)
-                if(dic[dic_alias[n_questao]]=='pos_pos'):
-                    media_pp.append(lst_medias[i])
-                elif(dic[dic_alias[n_questao]]=='pos_neg'):
-                    media_pn.append(lst_medias[i])
-                elif(dic[dic_alias[n_questao]]=='neg_neg'):
-                    media_nn.append(lst_medias[i])
+                if(dic_P2[dic_alias_P2[n_questao]]=='pos_pos'):
+                    media_PosPos.append(lst_medias[i])
+                elif(dic_P2[dic_alias_P2[n_questao]]=='pos_neg'):
+                    media_PosNeg.append(lst_medias[i])
+                elif(dic_P2[dic_alias_P2[n_questao]]=='neg_neg'):
+                    media_NegNeg.append(lst_medias[i])
                 else:    
-                    media_np.append(lst_medias[i])
+                    media_NegPos.append(lst_medias[i])
                 n_questao+=1
 
-            media_pp = sum(media_pp)/len(media_pp)
-            media_pn = sum(media_pn)/len(media_pn)
-            media_nn = sum(media_nn)/len(media_nn)
-            media_np = sum(media_np)/len(media_np)
+            media_PosPos = sum(media_PosPos)/len(media_PosPos)
+            media_PosNeg = sum(media_PosNeg)/len(media_PosNeg)
+            media_NegNeg = sum(media_NegNeg)/len(media_NegNeg)
+            media_NegPos = sum(media_NegPos)/len(media_NegPos)
 
-            lst_medias.append(media_pp)
-            lst_medias.append(media_pn)
-            lst_medias.append(media_nn)
-            lst_medias.append(media_np)
+            lst_medias.append(media_PosPos)
+            lst_medias.append(media_PosNeg)
+            lst_medias.append(media_NegNeg)
+            lst_medias.append(media_NegPos)
 
+        else:
+            n_questao = 1
+            media_Pos = []
+            media_Neg = []
+            for i in range(len(lst_medias)-1):
+                if(dic_P1[dic_alias_P1[n_questao]]=='pos'):
+                    media_Pos.append(lst_medias[i])
+                else:
+                    media_Neg.append(lst_medias[i])
+                n_questao+=1
+
+            media_Pos = sum(media_Pos)/len(media_Pos)
+            media_Neg = sum(media_Neg)/len(media_Neg)
+
+            lst_medias.append(media_Pos)
+            lst_medias.append(media_Neg)
 
         for i in range(len(lst_medias)):
             lst_medias[i] = ("{:.4f}".format(lst_medias[i]).replace('.',','))
@@ -194,6 +222,7 @@ def mediaDosFiltros(nome):
 
 ##
 
+mediaDosFiltros('Parte1')
 mediaDosFiltros('Parte2A')
 mediaDosFiltros('Parte2B')
 mediaDosFiltros('Conforto')
