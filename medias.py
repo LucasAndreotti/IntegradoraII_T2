@@ -141,7 +141,7 @@ def mediaDosFiltros(nome):
     dataset_medias= {}
     if nome == 'Parte1':
         lista = lst_P1_micro_answers
-        lista += ['Med_Medias','Med_Pos','Med_Neg']
+        lista += ['Med_Porcent','Med_Pos','Med_Neg']
     else:
 
         if nome == 'Carisma' or nome == 'Conforto':
@@ -165,8 +165,15 @@ def mediaDosFiltros(nome):
         dataset_filtro_media = dataset_filtro.mean()
 
         lst_medias = dataset_filtro_media.tolist()
-        media_medias = dataset_filtro_media.mean()
-        lst_medias.append(media_medias)
+        media_percents = dataset_filtro_media.mean() 
+
+        if nome == 'Parte1' or nome == 'Parte2A' or nome == 'Parte2B':
+            print(nome)
+            media_percents = media_percents * 100
+            for i in range(len(lst_medias)):
+                lst_medias[i] = lst_medias[i] * 100
+
+        lst_medias.append(media_percents)
 
         if nome != 'Parte1':
             n_questao = 7
@@ -239,3 +246,28 @@ Q4
 Q5
 Q6
  """
+""" 
+                semFiltro    Fem    Masc    Fam_Sim     Fam_Nao     menor_30    maior_30    emi_emc_si      sc_pg
+
+Parte1
+    media_%
+    media_pp
+    media_pn
+    media_nn
+    media_np
+
+Parte2A
+    media_%
+    media_pp
+    media_pn
+    media_nn
+    media_np
+
+Parte2B
+    media_%
+    media_pp
+    media_pn
+    media_nn
+    media_np
+
+"""
