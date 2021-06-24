@@ -1,0 +1,97 @@
+
+Respostas para cada Parte do Experimento
+
+==
+
+Controle (não será avaliado, mas ta ai)
+
+c1 anger
+c2 disgust
+c3 fear
+c4 happy
+c5 sad
+c6 surprise
+
+==
+
+Parte1 (Micro Expressões)
+
+q1 sad
+q2 happy
+q3 surprise
+q4 fear
+q5 anger
+q6 disgust
+
+==
+
+Parte2
+
+--
+
+A (Macro Expressão)
+
+q7 happy
+q8 surprise
+q9 sad
+q10 fear
+q11 anger
+
+q12 fear
+q13 sad
+q14 surprise
+q15 surprise
+q16 happy
+
+q17 disgust
+q18 anger
+q19 fear
+q20 disgust
+q21 happy
+
+q22 sad
+q23 fear
+q24 disgust
+q25 surprise
+q26 fear
+
+--
+
+B (Micro Expressão)
+
+q7 sad
+q8 sad
+q9 happy
+q10 anger
+q11 happy
+
+q12 disgust 
+q13 anger
+q14 fear
+q15 happy
+q16 anger
+
+q17 sad
+q18 surprise
+q19 surprise
+q20 surprise
+q21 surprise
+
+q22 disgust
+q23 disgust
+q24 fear
+q25 disgust
+q26 happy
+
+--
+
+==
+
+
+
+
+
+
+
+
+
